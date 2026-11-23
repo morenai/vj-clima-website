@@ -391,7 +391,7 @@ footer a:hover{color:#fff}
     <div class="cols">
       <div><span class="brand-card"><svg class="brand-svg" viewBox="0 0 600 340" role="img" aria-label="VJ Clima" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wind-f" x1="40" y1="0" x2="560" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs><path d="M40 124 C150 30 430 20 560 104" fill="none" stroke="url(#wind-f)" stroke-width="20" stroke-linecap="round"/><path d="M452 190 C490 206 520 212 556 196" fill="none" stroke="#F97316" stroke-width="11" stroke-linecap="round"/><text x="300" y="250" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="190" fill="#2563EB" letter-spacing="-6">VJ</text><text x="300" y="318" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="62" fill="#0B2A4A" letter-spacing="12">CLIMA</text></svg></span><p>Agua, luz, gas y climatización para viviendas, comunidades y negocios.</p></div>
       <div><h4>Servicios</h4><a href="#servicios">Fontanería</a><a href="#servicios">Electricidad</a><a href="#servicios">Gas</a><a href="#servicios">Aire acondicionado</a></div>
-      <div><h4>Contacto</h4><a data-cv="tel" href="#" data-cv-text="phone">644 55 65 87</a><a data-cv="mail" href="#" data-cv-text="email">v.c.volquez@gmail.com</a><span data-cv-text="address">Toda Cataluña</span></div>
+      <div><h4>Contacto</h4><a data-cv="tel" href="#" data-cv-text="phone">644 55 65 87</a><a data-cv="tel2" href="#" data-cv-text="phone2">605 443 577</a><a data-cv="mail" href="#" data-cv-text="email">v.c.volquez@gmail.com</a><span data-cv-text="address">Toda Cataluña</span></div>
     </div>
     <div class="copy"><span>© <script>document.write(new Date().getFullYear())</script> VJ Clima e Instalaciones</span><span><a style="display:inline" href="#">Aviso legal</a> · <a style="display:inline" href="#">Privacidad</a> · <a style="display:inline" href="#">Cookies</a></span></div>
   </div>
@@ -414,6 +414,8 @@ window.CV_CONFIG = {
   PHONE_LABEL: "644 55 65 87",  // cómo se muestra en pantalla
   WHATSAPP: "34644556587",      // Vladimir, sin "+" ni espacios
   WHATSAPP_2: "34605443577",    // Juan, sin "+" ni espacios
+  PHONE_2: "+34605443577",      // teléfono de Juan para llamadas
+  PHONE_2_LABEL: "605 443 577",
   EMAIL: "v.c.volquez@gmail.com",
   ADDRESS: "Toda Cataluña",
   FORM_ENDPOINT: ""
@@ -434,6 +436,7 @@ function toggleWa(btn) {
     document.querySelectorAll("[data-cv]").forEach(function (el) {
       var k = el.getAttribute("data-cv");
       if (k === "tel") el.href = "tel:" + (C.PHONE || "");
+      if (k === "tel2") el.href = "tel:" + (C.PHONE_2 || "");
       if (k === "mail") el.href = "mailto:" + (C.EMAIL || "");
       if (k === "wa" || k === "wa2") {
         var msg = el.getAttribute("data-msg") || "Hola, quiero pedir un presupuesto.";
@@ -446,6 +449,7 @@ function toggleWa(btn) {
     document.querySelectorAll("[data-cv-text]").forEach(function (el) {
       var k = el.getAttribute("data-cv-text");
       if (k === "phone") el.textContent = C.PHONE_LABEL || "";
+      if (k === "phone2") el.textContent = C.PHONE_2_LABEL || "";
       if (k === "email") el.textContent = C.EMAIL || "";
       if (k === "address") el.textContent = C.ADDRESS || "";
     });
