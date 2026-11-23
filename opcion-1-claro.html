@@ -163,10 +163,18 @@ footer a:hover{color:#fff}
   .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
   .mbar .btn{padding:13px 8px;font-size:14px}
 }
-.wa-float{position:fixed;right:20px;bottom:24px;z-index:40;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 18px;border-radius:999px;box-shadow:0 12px 28px rgba(37,211,102,.35)}
+.wa-wrap{position:fixed;right:20px;bottom:24px;z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(11,42,74,.18);padding:14px;width:250px}
+.wa-panel[hidden]{display:none}
+.wa-panel p{margin:0 0 10px;font-weight:700;color:var(--navy);font-size:14px}
+.wa-opt{display:flex;flex-direction:column;text-decoration:none;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;color:var(--navy)}
+.wa-opt:hover{border-color:#25D366}
+.wa-name{font-weight:800;font-size:15px}
+.wa-opt small{color:var(--muted);font-size:12px}
+.wa-float{border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 18px;border-radius:999px;box-shadow:0 12px 28px rgba(37,211,102,.35)}
 .wa-float:hover{transform:translateY(-2px)}
 .wa-float svg{width:22px;height:22px}
-@media (max-width:980px){.wa-float{bottom:92px;right:14px;padding:12px 14px}.wa-float span{display:none}}
+@media (max-width:980px){.wa-wrap{bottom:92px;right:14px}.wa-float{padding:12px 14px}.wa-float span{display:none}}
 .wordmark{display:inline-flex;align-items:baseline;gap:6px;font:800 30px/1 Inter,system-ui,"Segoe UI",Arial,sans-serif;letter-spacing:-.03em;color:var(--navy);text-decoration:none;white-space:nowrap}
 .wordmark span{font-weight:600;color:var(--blue)}
 .wordmark::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);align-self:flex-end;margin-bottom:4px}
@@ -371,7 +379,7 @@ footer a:hover{color:#fff}
         <div><h2>¿Hablamos de tu proyecto?</h2><p>Pide tu presupuesto o escríbenos ahora por WhatsApp.</p></div>
         <div class="cta-row">
           <a class="btn btn-primary" href="#presupuesto">Pedir presupuesto</a>
-          <a class="btn btn-ghost" data-cv="wa" href="#"><svg class="i"><use href="#chat"/></svg> WhatsApp</a>
+          <a class="btn btn-ghost" data-cv="wa" data-msg="Hola Vladimir, quiero pedir un presupuesto a VJ Clima." href="#"><svg class="i"><use href="#chat"/></svg> Hablar con Vladimir</a><a class="btn btn-ghost" data-cv="wa2" data-msg="Hola Juan, quiero pedir un presupuesto a VJ Clima." href="#"><svg class="i"><use href="#chat"/></svg> Hablar con Juan</a>
         </div>
       </div>
     </div>
@@ -389,10 +397,10 @@ footer a:hover{color:#fff}
   </div>
 </footer>
 
-<a class="wa-float" data-cv="wa" data-msg="Hola, quiero pedir un presupuesto a VJ Clima." href="#" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.7.1 2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg><span>WhatsApp</span></a>
+<div class="wa-wrap"><div class="wa-panel" id="waPanel" hidden><p>¿Con quién quieres hablar?</p><a class="wa-opt" data-cv="wa" data-msg="Hola Vladimir, quiero pedir un presupuesto a VJ Clima." href="#"><span class="wa-name">Vladimir</span><small>Hablar por WhatsApp</small></a><a class="wa-opt" data-cv="wa2" data-msg="Hola Juan, quiero pedir un presupuesto a VJ Clima." href="#"><span class="wa-name">Juan</span><small>Hablar por WhatsApp</small></a></div><button class="wa-float" type="button" aria-expanded="false" aria-controls="waPanel" onclick="toggleWa(this)" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.7.1 2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg><span>WhatsApp</span></button></div>
 <div class="mbar" aria-label="Contacto rápido">
   <a class="btn btn-ghost" data-cv="tel" href="#"><svg class="i"><use href="#phone"/></svg>Llamar</a>
-  <a class="btn btn-ghost" data-cv="wa" href="#"><svg class="i"><use href="#chat"/></svg>WhatsApp</a>
+  <a class="btn btn-ghost" href="#contacto"><svg class="i"><use href="#chat"/></svg>WhatsApp</a>
   <a class="btn btn-primary" href="#presupuesto">Presupuesto</a>
 </div>
 
@@ -404,11 +412,18 @@ footer a:hover{color:#fff}
 window.CV_CONFIG = {
   PHONE: "+34644556587",        // formato internacional, sin espacios
   PHONE_LABEL: "644 55 65 87",  // cómo se muestra en pantalla
-  WHATSAPP: "34644556587",      // sin "+" ni espacios
+  WHATSAPP: "34644556587",      // Vladimir, sin "+" ni espacios
+  WHATSAPP_2: "34605443577",    // Juan, sin "+" ni espacios
   EMAIL: "v.c.volquez@gmail.com",
   ADDRESS: "Toda Cataluña",
   FORM_ENDPOINT: ""
 };
+function toggleWa(btn) {
+  var p = document.getElementById("waPanel");
+  var open = p.hidden;
+  p.hidden = !open;
+  btn.setAttribute("aria-expanded", String(open));
+}
 </script>
 <script>
 /* ===== Lógica del formulario y enlaces de contacto ===== */
@@ -420,9 +435,10 @@ window.CV_CONFIG = {
       var k = el.getAttribute("data-cv");
       if (k === "tel") el.href = "tel:" + (C.PHONE || "");
       if (k === "mail") el.href = "mailto:" + (C.EMAIL || "");
-      if (k === "wa") {
+      if (k === "wa" || k === "wa2") {
         var msg = el.getAttribute("data-msg") || "Hola, quiero pedir un presupuesto.";
-        el.href = "https://wa.me/" + (C.WHATSAPP || "") + "?text=" + encodeURIComponent(msg);
+        var num = k === "wa2" ? (C.WHATSAPP_2 || "") : (C.WHATSAPP || "");
+        el.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(msg);
         el.target = "_blank";
         el.rel = "noopener";
       }
